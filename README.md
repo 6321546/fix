@@ -10,7 +10,7 @@ ipaddress : IPv4/IPv6 操作ライブラリ
 どの回答のプログラムも1行づつログファイルからデータを読み込み、正規表現表現を用いて必要な情報を分割して得ています。
 各回答ごとに故障期間を出力する関数ReportTime()と、アドレスaddres、故障開始時間のリストsTime、故障終了時間のリストeTime、自身故障中なのかどうかを表すstateをデータとして持つようなclass:Serverを定義しています。
 
-主なプログラムの流れ.  
+主なプログラムの流れ  
 (1). class:Serverを要素として持つリスト内に該当アドレスを持つサーバーがあるかどうかを調べる。  
 (2). なければ追加を行う。  
 (3). (1)で見つけたサーバー、もしくは、(2)で追加したサーバーに対してping値に対応して処理を行う。  
@@ -28,8 +28,8 @@ ipaddress : IPv4/IPv6 操作ライブラリ
 #### 前述したもの以外にclass:Serverが持っている値
 count:タイムアウトの連続回数.
 #### pingの値に対応した処理
-'-'  : countの値を1にする:関数addcount(). 
-other: countの値を0にする:関数resetcount(). 
+'-'  : countの値を1にする:関数addcount()  
+other: countの値を0にする:関数resetcount() 
 #### サーバーの故障状態の判断と時間の記録の仕方:関数isBreak(time)
 countの値が1でstateがFalseなら開始時間のリストsTimeに時間を追加する。その後stateをTrueにする。  
 countの値が0でstateがTrueなら終了時間のリストeTimeに時間を記録する。その後stateをFalseにする。  
@@ -41,11 +41,11 @@ Nはプログラムのパラメータとして与えられるようにするこ�
 
 ### A2.
 #### 前述したもの以外にclass:Serverが持っている値
-count:タイムアウトの連続回数. 
-N:故障の閾値. 
+count:タイムアウトの連続回数  
+N:故障の閾値  
 #### pingの値に対応した処理
-'-'  : countの値がN以下ならcountの値を1増加させる:関数addcount(). 
-other: countの値を0にする:関数resetcount(). 
+'-'  : countの値がN以下ならcountの値を1増加させる:関数addcount()  
+other: countの値を0にする:関数resetcount()  
 #### サーバーの故障状態の判断と時間の記録の仕方:関数isBreak(time)
 countの値がNでstateがFalseなら開始時間のリストsTimeに時間を追加する。その後stateをTrueにする。  
 countの値が0でstateがTrueなら終了時間のリストeTimeに時間を記録する。その後stateをFalseにする。  
@@ -61,10 +61,10 @@ countの値が0でstateがTrueなら終了時間のリストeTimeに時間を記
 #### 特記事項:平均応答時間の計算について
 直近の応答がM回より小さい場合は、その数で平均をとり平均応答時間を計算しています。
 #### 前述したもの以外にclass:Serverが持っている値
-M:計算する直近の回数. 
-T:平均応答時間の閾値. 
-PingMemory:直近M回のping値を要素として持つリスト. 
-index:PingMemoryのインデックス. 
+M:計算する直近の回数  
+T:平均応答時間の閾値  
+PingMemory:直近M回のping値を要素として持つリスト  
+index:PingMemoryのインデックス  
 #### pingの値に対応した処理:関数addping(ping)
 PingMemoryの中で一番古いping値が格納されているインデックスへ新しいping値を格納する。
 #### サーバーの故障状態の判断と時間の記録の仕方
@@ -83,7 +83,7 @@ PingMemoryの中で一番古いping値が格納されているインデックス
 class:Subnetworkはclass:Serverと同様に故障期間を出力する関数ReportTime()と、ネットワークアドレスnetwork、故障開始時間のリストsTime、故障終了時間のリストeTime、自身故障中なのかどうかを表すstateを持っています。  
 class:ServerについてはA2.と同じものです。
 
-主なプログラムの流れ. 
+主なプログラムの流れ  
 (1). class:SubNetworkを要素として持つリスト内に該当ネットワークアドレスを持つネットワークがあるかどうかを調べる。  
 (2). なければリストにネットワークの追加を行う。  
 (3). (1)で見つけたネットワーク、もしくは、(2)で追加したネットワークが持つサーバーのリストに対して該当アドレスを持つサーバーがあるかを調べる。  
